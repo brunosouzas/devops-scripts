@@ -1,1 +1,1 @@
-# devops-scripts
+# mulesoft-scripts

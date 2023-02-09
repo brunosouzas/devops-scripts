@@ -1,0 +1,74 @@
+stages:
+- stage: packageStage
+  displayName: "Package & Unit Test"
+  condition: succeeded()
+  pool:
+    vmImage: macOS-latest
+    name: Azure Pipelines
+    demands: maven
+
+  jobs:
+  - job: unitTestJob
+    displayName: 'Unit Test'
+    steps:
+    - template: pipeline-steps/download-settings.yml@devops-scripts
+    - task: Maven@3
+      displayName: 'MUnit Test'
+      inputs:
+        goals: 'clean test'
+        mavenPomFile: '$(Build.SourcesDirectory)/pom.xml'
+        options: '-s $(Agent.TempDirectory)/settings.xml'
+
+  - job: packageJob
+    condition: succeeded()
+    dependsOn: unitTestJob
+    displayName: 'Package'      
+    steps:
+    - template: pipeline-steps/download-settings.yml@devops-scripts
+    - task: Maven@3
+      displayName: "Deploy: Exchange"
+      inputs:
+        goals: 'clean deploy'
+        mavenPomFile: '$(Build.SourcesDirectory)/pom.xml'
+        options: "--settings $(Agent.TempDirectory)/settings.xml \
+                  -DskipTests=true"
+
+
+- stage: deployStage
+  condition: succeeded()
+  dependsOn: packageStage
+  displayName: "Deploy"
+  pool:
+    vmImage: macOS-latest
+    name: Azure Pipelines
+    demands: maven
+    
+  variables:
+  - ${{ if eq(variables['Build.SourceBranchName'], 'develop') }}:
+    - group: anypoint-platform-development-variables
+  - ${{ if contains(variables['Build.SourceBranchName'], 'release') }}:
+    - group: anypoint-platform-release-variables
+  - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
+    - group: anypoint-platform-production-variables
+  - group: ${{ variables['Build.Repository.Name'] }}
+  - group: anypoint-platform-variables
+
+  jobs:
+  - job: DeployJob
+    condition: succeeded()
+    displayName: 'Deploy from $(Build.SourceBranchName)'
+    steps:
+    - template: pipeline-steps/download-settings.yml@devops-scripts
+    - task: Maven@3
+      displayName: "Deploy"
+      inputs:
+        goals: 'clean deploy'
+        mavenPomFile: '$(Build.SourcesDirectory)/pom.xml'
+        options: "--settings $(Agent.TempDirectory)/settings.xml \
+                  -DmuleDeploy \
+                  -DskipTests=true \
+                  -Ddeployment.env=$(muleEnv) \
+                  -Dencrypt.key=$(encryptKeyNonProd) \
+                  -Dch2.env=$(chEnv) \
+                  -Dap.client_id=$(AnypointClientId) \
+                  -Dap.client_secret=$(AnypointClientSecret)"
