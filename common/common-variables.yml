@@ -1,0 +1,4 @@
+variables:
+  M2_HOME: $(System.DefaultWorkingDirectory)/maven/apache-maven-3.8.7
+  MAVEN_CACHE_FOLDER: $(System.DefaultWorkingDirectory)/.m2/repository
+  MAVEN_OPTS: '-Xmx3072m -Dmaven.repo.local=$(MAVEN_CACHE_FOLDER)'

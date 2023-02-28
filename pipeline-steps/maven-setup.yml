@@ -1,0 +1,17 @@
+parameters:
+- name: mavenHome
+  displayName: 'Maven Home'
+  type: string
+- name: mavenOpts
+  displayName: 'Maven Options'
+  type: string
+
+steps:
+- task: Bash@3
+  displayName: "Maven Setup - Apache 3.8.7"
+  name: mavenSetupTask
+  inputs:
+    filePath: 'devops-scripts/bash/maven-setup.sh'
+  env:
+    M2_HOME: ${{ parameters.mavenHome }}
+    MAVEN_OPTS: ${{ parameters.mavenOpts }}

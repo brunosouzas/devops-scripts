@@ -1,74 +1,75 @@
 stages:
-- stage: packageStage
-  displayName: "Package & Unit Test"
-  condition: succeeded()
-  pool:
-    vmImage: macOS-latest
-    name: Azure Pipelines
-    demands: maven
-
-  jobs:
-  - job: unitTestJob
-    displayName: 'Unit Test'
-    steps:
-    - template: pipeline-steps/download-settings.yml@devops-scripts
-    - task: Maven@3
-      displayName: 'MUnit Test'
-      inputs:
-        goals: 'clean test'
-        mavenPomFile: '$(Build.SourcesDirectory)/pom.xml'
-        options: '-s $(Agent.TempDirectory)/settings.xml'
-
-  - job: packageJob
+- ${{ if eq(variables['Build.SourceBranchName'], 'develop') }}:
+  - stage: DeployStage
+    displayName: "Package, Unit Test & Deploy"
     condition: succeeded()
-    dependsOn: unitTestJob
-    displayName: 'Package'      
-    steps:
-    - template: pipeline-steps/download-settings.yml@devops-scripts
-    - task: Maven@3
-      displayName: "Deploy: Exchange"
-      inputs:
-        goals: 'clean deploy'
-        mavenPomFile: '$(Build.SourcesDirectory)/pom.xml'
-        options: "--settings $(Agent.TempDirectory)/settings.xml \
-                  -DskipTests=true"
+    pool:
+      vmImage: macOS-latest
+      name: Azure Pipelines
+      demands: maven
 
+    variables:
+    - ${{ if eq(variables['Build.SourceBranchName'], 'develop') }}:
+      - group: anypoint-platform-development-variables
+    - group: ${{ variables['Build.Repository.Name'] }}
+    - group: anypoint-platform-variables
+    - template: common/common-variables.yml@devops-scripts
 
-- stage: deployStage
-  condition: succeeded()
-  dependsOn: packageStage
-  displayName: "Deploy"
-  pool:
-    vmImage: macOS-latest
-    name: Azure Pipelines
-    demands: maven
-    
-  variables:
-  - ${{ if eq(variables['Build.SourceBranchName'], 'develop') }}:
-    - group: anypoint-platform-development-variables
-  - ${{ if contains(variables['Build.SourceBranchName'], 'release') }}:
-    - group: anypoint-platform-release-variables
-  - ${{ if eq(variables['Build.SourceBranchName'], 'main') }}:
-    - group: anypoint-platform-production-variables
-  - group: ${{ variables['Build.Repository.Name'] }}
-  - group: anypoint-platform-variables
+    jobs:
+    - job: deployJob
+      displayName: 'Package, Unit Test & Deploy'
+      steps:
+      - checkout: self
+      - checkout: devops-scripts
+      
+      - template: pipeline-steps/maven-setup.yml@devops-scripts
+        parameters:
+          mavenHome: $(M2_HOME)
+          mavenOpts: $(MAVEN_OPTS)
+      
+      - template: pipeline-steps/download-settings.yml@devops-scripts
+      
+      - task: Maven@3
+        displayName: 'MUnit Test'
+        inputs:
+          goals: 'clean test'
+          mavenPomFile: '$(Build.SourcesDirectory)/$(Build.Repository.Name)/pom.xml'
+          options: '-s $(Agent.TempDirectory)/settings.xml'
+      
+      - task: Maven@3
+        displayName: "Deploy: Exchange"
+        inputs:
+          goals: 'deploy'
+          mavenPomFile: '$(Build.SourcesDirectory)/$(Build.Repository.Name)/pom.xml'
+          options: "--settings $(Agent.TempDirectory)/settings.xml \
+                    -DskipTests=true"
 
-  jobs:
-  - job: DeployJob
-    condition: succeeded()
-    displayName: 'Deploy from $(Build.SourceBranchName)'
-    steps:
-    - template: pipeline-steps/download-settings.yml@devops-scripts
-    - task: Maven@3
-      displayName: "Deploy"
-      inputs:
-        goals: 'clean deploy'
-        mavenPomFile: '$(Build.SourcesDirectory)/pom.xml'
-        options: "--settings $(Agent.TempDirectory)/settings.xml \
-                  -DmuleDeploy \
-                  -DskipTests=true \
-                  -Ddeployment.env=$(muleEnv) \
-                  -Dencrypt.key=$(encryptKeyNonProd) \
-                  -Dch2.env=$(chEnv) \
-                  -Dap.client_id=$(AnypointClientId) \
-                  -Dap.client_secret=$(AnypointClientSecret)"
+      - task: CopyFiles@2
+        displayName: 'Copy Artifact to Publish'
+        condition: succeeded()
+        inputs:
+          sourceFolder: '$(Build.SourcesDirectory)/$(Build.Repository.Name)/target'
+          contents: '*.jar'
+          targetFolder: '$(Build.ArtifactStagingDirectory)'
+
+      - task: PublishPipelineArtifact@1
+        condition: succeeded()
+        displayName: 'Publish: Artifact'
+        inputs:
+          targetPath: '$(Build.ArtifactStagingDirectory)'
+          artifactName: '$(Build.Repository.Name)'
+
+      - ${{ if eq(variables['Build.SourceBranchName'], 'develop') }}:
+        - task: Maven@3
+          displayName: "Deploy: Cloudhub"
+          inputs:
+            goals: 'deploy'
+            mavenPomFile: '$(Build.SourcesDirectory)/$(Build.Repository.Name)/pom.xml'
+            options: "--settings $(Agent.TempDirectory)/settings.xml \
+                      -DmuleDeploy \
+                      -DskipTests=true \
+                      -Ddeployment.env=$(muleEnv) \
+                      -Dencrypt.key=$(encryptKeyNonProd) \
+                      -Dch2.env=$(chEnv) \
+                      -Dap.client_id=$(AnypointClientId) \
+                      -Dap.client_secret=$(AnypointClientSecret)"
