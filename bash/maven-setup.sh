@@ -30,7 +30,7 @@ pwd
 
 echo ""
 echo Downloading Maven on $OSTYPE
-curl -o apache-maven-3.8.7.zip https://downloads.apache.org/maven/maven-3/3.8.7/binaries/apache-maven-3.8.7-bin.zip
+curl -o apache-maven-3.8.7.zip https://archive.apache.org/dist/maven/maven-3/3.8.7/binaries/apache-maven-3.8.7-bin.zip
 
 echo ""
 echo 'unzip apache-maven'
