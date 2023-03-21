@@ -10,10 +10,10 @@ echo MAVEN_OPTS::$MAVEN_OPTS
 echo OSTYPE::$OSTYPE
 echo ""
 
-if ! command -v unzip &> /dev/null && "$OSTYPE" == "linux-gnu"*; then
+if ! command -v unzip &> /dev/null && [[ "$OSTYPE" == *"linux-gnu"* ]]; then
     echo Installing unzip on linux::$OSTYPE
     sudo apt-get install unzip
-elif ! command -v unzip &> /dev/null && "$OSTYPE" == "darwin"*; then
+elif ! command -v unzip &> /dev/null && [[ "$OSTYPE" == *"darwin"* ]]; then
     echo Installing unzip on Mac OSX
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
     brew update && brew install unzip
