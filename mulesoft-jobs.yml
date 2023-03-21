@@ -9,8 +9,7 @@ stages:
       demands: maven
 
     variables:
-    - ${{ if eq(variables['Build.SourceBranchName'], 'develop') }}:
-      - group: anypoint-platform-development-variables
+    - group: anypoint-platform-development-variables
     - group: ${{ variables['Build.Repository.Name'] }}
     - group: anypoint-platform-variables
     - template: common/common-variables.yml@devops-scripts
@@ -59,17 +58,16 @@ stages:
           targetPath: '$(Build.ArtifactStagingDirectory)'
           artifactName: '$(Build.Repository.Name)'
 
-      - ${{ if eq(variables['Build.SourceBranchName'], 'develop') }}:
-        - task: Maven@3
-          displayName: "Deploy: Cloudhub"
-          inputs:
-            goals: 'deploy'
-            mavenPomFile: '$(Build.SourcesDirectory)/$(Build.Repository.Name)/pom.xml'
-            options: "--settings $(Agent.TempDirectory)/settings.xml \
-                      -DmuleDeploy \
-                      -DskipTests=true \
-                      -Ddeployment.env=$(muleEnv) \
-                      -Dencrypt.key=$(encryptKeyNonProd) \
-                      -Dch2.env=$(chEnv) \
-                      -Dap.client_id=$(AnypointClientId) \
-                      -Dap.client_secret=$(AnypointClientSecret)"
+      - task: Maven@3
+        displayName: "Deploy: Cloudhub"
+        inputs:
+          goals: 'deploy'
+          mavenPomFile: '$(Build.SourcesDirectory)/$(Build.Repository.Name)/pom.xml'
+          options: "--settings $(Agent.TempDirectory)/settings.xml \
+                    -DmuleDeploy \
+                    -DskipTests=true \
+                    -Ddeployment.env=$(muleEnv) \
+                    -Dencrypt.key=$(encryptKeyNonProd) \
+                    -Dch2.env=$(chEnv) \
+                    -Dap.client_id=$(AnypointClientId) \
+                    -Dap.client_secret=$(AnypointClientSecret)"
