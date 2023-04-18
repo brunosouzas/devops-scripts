@@ -1,0 +1,514 @@
+{
+    "source": 2,
+    "revision": 6,
+    "description": null,
+    "createdBy": {
+        "displayName": "Bruno Souza",
+        "url": "https://spsproduks1.vssps.visualstudio.com/Aa77ffedb-9451-4c6a-ac58-5f5b06f1d95b/_apis/Identities/7bfde035-bdff-6e11-98d6-f64dcc40242f",
+        "_links": {
+            "avatar": {
+                "href": "https://dev.azure.com/mule-brunosouzas/_apis/GraphProfile/MemberAvatars/msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm"
+            }
+        },
+        "id": "7bfde035-bdff-6e11-98d6-f64dcc40242f",
+        "uniqueName": "brunosouzas@gmail.com",
+        "imageUrl": "https://dev.azure.com/mule-brunosouzas/_apis/GraphProfile/MemberAvatars/msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm",
+        "descriptor": "msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm"
+    },
+    "createdOn": "2023-02-10T11:24:42.340Z",
+    "modifiedBy": {
+        "displayName": "Bruno Souza",
+        "url": "https://spsproduks1.vssps.visualstudio.com/Aa77ffedb-9451-4c6a-ac58-5f5b06f1d95b/_apis/Identities/7bfde035-bdff-6e11-98d6-f64dcc40242f",
+        "_links": {
+            "avatar": {
+                "href": "https://dev.azure.com/mule-brunosouzas/_apis/GraphProfile/MemberAvatars/msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm"
+            }
+        },
+        "id": "7bfde035-bdff-6e11-98d6-f64dcc40242f",
+        "uniqueName": "brunosouzas@gmail.com",
+        "imageUrl": "https://dev.azure.com/mule-brunosouzas/_apis/GraphProfile/MemberAvatars/msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm",
+        "descriptor": "msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm"
+    },
+    "modifiedOn": "2023-02-28T13:15:10.340Z",
+    "isDeleted": false,
+    "lastRelease": {
+        "id": 4,
+        "name": "20230228.4",
+        "artifacts": [],
+        "_links": {},
+        "description": "",
+        "releaseDefinition": {
+            "id": 2,
+            "projectReference": null,
+            "_links": {}
+        },
+        "createdOn": "2023-02-28T13:21:05.583Z",
+        "createdBy": {
+            "displayName": "Bruno Souza",
+            "url": "https://spsproduks1.vssps.visualstudio.com/Aa77ffedb-9451-4c6a-ac58-5f5b06f1d95b/_apis/Identities/7bfde035-bdff-6e11-98d6-f64dcc40242f",
+            "_links": {
+                "avatar": {
+                    "href": "https://dev.azure.com/mule-brunosouzas/_apis/GraphProfile/MemberAvatars/msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm"
+                }
+            },
+            "id": "7bfde035-bdff-6e11-98d6-f64dcc40242f",
+            "uniqueName": "brunosouzas@gmail.com",
+            "imageUrl": "https://dev.azure.com/mule-brunosouzas/_apis/GraphProfile/MemberAvatars/msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm",
+            "descriptor": "msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm"
+        }
+    },
+    "variables": {
+        "M2_HOME": {
+            "value": "$(System.DefaultWorkingDirectory)/maven/apache-maven-3.8.7"
+        },
+        "MAVEN_OPTS": {
+            "value": "-Xmx3072m -Dmaven.repo.local=$(System.DefaultWorkingDirectory)/.m2/repository"
+        }
+    },
+    "variableGroups": [
+        4,
+        5
+    ],
+    "environments": [
+        {
+            "id": 2,
+            "name": "Prod Deploy",
+            "rank": 1,
+            "owner": {
+                "displayName": "Bruno Souza",
+                "url": "https://spsproduks1.vssps.visualstudio.com/Aa77ffedb-9451-4c6a-ac58-5f5b06f1d95b/_apis/Identities/7bfde035-bdff-6e11-98d6-f64dcc40242f",
+                "_links": {
+                    "avatar": {
+                        "href": "https://dev.azure.com/mule-brunosouzas/_apis/GraphProfile/MemberAvatars/msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm"
+                    }
+                },
+                "id": "7bfde035-bdff-6e11-98d6-f64dcc40242f",
+                "uniqueName": "brunosouzas@gmail.com",
+                "imageUrl": "https://dev.azure.com/mule-brunosouzas/_apis/GraphProfile/MemberAvatars/msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm",
+                "descriptor": "msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm"
+            },
+            "variables": {},
+            "variableGroups": [
+                3
+            ],
+            "preDeployApprovals": {
+                "approvals": [
+                    {
+                        "rank": 1,
+                        "isAutomated": false,
+                        "isNotificationOn": false,
+                        "approver": {
+                            "displayName": "Bruno Souza",
+                            "url": "https://spsproduks1.vssps.visualstudio.com/Aa77ffedb-9451-4c6a-ac58-5f5b06f1d95b/_apis/Identities/7bfde035-bdff-6e11-98d6-f64dcc40242f",
+                            "_links": {
+                                "avatar": {
+                                    "href": "https://dev.azure.com/mule-brunosouzas/_apis/GraphProfile/MemberAvatars/msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm"
+                                }
+                            },
+                            "id": "7bfde035-bdff-6e11-98d6-f64dcc40242f",
+                            "uniqueName": "brunosouzas@gmail.com",
+                            "imageUrl": "https://dev.azure.com/mule-brunosouzas/_apis/GraphProfile/MemberAvatars/msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm",
+                            "descriptor": "msa.N2JmZGUwMzUtYmRmZi03ZTExLTk4ZDYtZjY0ZGNjNDAyNDJm"
+                        },
+                        "id": 4
+                    }
+                ],
+                "approvalOptions": {
+                    "requiredApproverCount": 1,
+                    "releaseCreatorCanBeApprover": true,
+                    "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+                    "enforceIdentityRevalidation": false,
+                    "timeoutInMinutes": 0,
+                    "executionOrder": 1
+                }
+            },
+            "deployStep": {
+                "id": 7
+            },
+            "postDeployApprovals": {
+                "approvals": [
+                    {
+                        "rank": 1,
+                        "isAutomated": true,
+                        "isNotificationOn": false,
+                        "id": 8
+                    }
+                ],
+                "approvalOptions": {
+                    "requiredApproverCount": null,
+                    "releaseCreatorCanBeApprover": false,
+                    "autoTriggeredAndPreviousEnvironmentApprovedCanBeSkipped": false,
+                    "enforceIdentityRevalidation": false,
+                    "timeoutInMinutes": 0,
+                    "executionOrder": 2
+                }
+            },
+            "deployPhases": [
+                {
+                    "deploymentInput": {
+                        "parallelExecution": {
+                            "parallelExecutionType": 0
+                        },
+                        "agentSpecification": {
+                            "identifier": "macos latest"
+                        },
+                        "skipArtifactsDownload": false,
+                        "artifactsDownloadInput": {
+                            "downloadInputs": []
+                        },
+                        "queueId": 9,
+                        "demands": [],
+                        "enableAccessToken": false,
+                        "timeoutInMinutes": 0,
+                        "jobCancelTimeoutInMinutes": 1,
+                        "condition": "succeeded()",
+                        "overrideInputs": {}
+                    },
+                    "rank": 1,
+                    "phaseType": 1,
+                    "name": "deployProdJob",
+                    "refName": null,
+                    "workflowTasks": [
+                        {
+                            "environment": {
+                                "M2_HOME": "$(M2_HOME)",
+                                "MAVEN_OPTS": "$(MAVEN_OPTS)"
+                            },
+                            "taskId": "6c731c3c-3c68-459a-a5c9-bde6e6595b5b",
+                            "version": "3.*",
+                            "name": "Maven Setup",
+                            "refName": "",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "retryCountOnTaskFailure": 0,
+                            "definitionType": "task",
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "targetType": "filePath",
+                                "filePath": "$(System.DefaultWorkingDirectory)/_devops-scripts/bash/maven-setup.sh",
+                                "arguments": "",
+                                "script": "# Write your commands here\n\necho 'Hello world'\n",
+                                "workingDirectory": "",
+                                "failOnStderr": "false",
+                                "bashEnvValue": ""
+                            }
+                        },
+                        {
+                            "environment": {
+                                "ARTIFACT_PATH": "$(System.DefaultWorkingDirectory)/_artifact/$(Release.Artifacts._artifact.DefinitionName)"
+                            },
+                            "taskId": "6c731c3c-3c68-459a-a5c9-bde6e6595b5b",
+                            "version": "3.*",
+                            "name": "Path File Name",
+                            "refName": "",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "retryCountOnTaskFailure": 0,
+                            "definitionType": "task",
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "targetType": "filePath",
+                                "filePath": "$(System.DefaultWorkingDirectory)/_devops-scripts/bash/find-artifact-path.sh",
+                                "arguments": "",
+                                "script": "pathFileName=$(find $ARTIFACT_PATH -type f -name \"*.jar\")\necho \"##vso[task.setvariable variable=PATH_FILE_NAME;isOutput=false]$pathFileName\"\necho PATH_FILE_NAME::$pathFileName\n",
+                                "workingDirectory": "",
+                                "failOnStderr": "false",
+                                "bashEnvValue": ""
+                            }
+                        },
+                        {
+                            "environment": {},
+                            "taskId": "5e1e3830-fbfb-11e5-aab1-090c92bc4988",
+                            "version": "1.*",
+                            "name": "Extract jar file ",
+                            "refName": "",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "retryCountOnTaskFailure": 0,
+                            "definitionType": "task",
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "archiveFilePatterns": "$(System.DefaultWorkingDirectory)/_artifact/$(Release.Artifacts._artifact.DefinitionName)/*.jar",
+                                "destinationFolder": "$(System.DefaultWorkingDirectory)/extract",
+                                "cleanDestinationFolder": "true",
+                                "overwriteExistingFiles": "false",
+                                "pathToSevenZipTool": ""
+                            }
+                        },
+                        {
+                            "environment": {
+                                "EXTRACT_FOLDER": "$(System.DefaultWorkingDirectory)/extract",
+                                "POM_FOLDER": "$(System.DefaultWorkingDirectory)/extract/app_pom"
+                            },
+                            "taskId": "6c731c3c-3c68-459a-a5c9-bde6e6595b5b",
+                            "version": "3.*",
+                            "name": "Copy POM file",
+                            "refName": "",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "retryCountOnTaskFailure": 0,
+                            "definitionType": "task",
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "targetType": "filePath",
+                                "filePath": "$(System.DefaultWorkingDirectory)/_devops-scripts/bash/find-copy-pom.sh",
+                                "arguments": "",
+                                "script": "pomFile=$(find $EXTRACT_FOLDER -name \"pom.xml\") \n\nmkdir $POM_FOLDER\ncp $pomFile $POM_FOLDER\n\ncd $POM_FOLDER",
+                                "workingDirectory": "",
+                                "failOnStderr": "false",
+                                "bashEnvValue": ""
+                            }
+                        },
+                        {
+                            "environment": {},
+                            "taskId": "2a6ca863-f2ce-4f4d-8bcb-15e64608ec4b",
+                            "version": "1.*",
+                            "name": "Download Settings",
+                            "refName": "",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "retryCountOnTaskFailure": 0,
+                            "definitionType": "task",
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "secureFile": "8f9b630e-19e3-4add-a014-1aafb257cf11",
+                                "retryCount": "8",
+                                "socketTimeout": ""
+                            }
+                        },
+                        {
+                            "environment": {
+                                "POM_FILE": "$(System.DefaultWorkingDirectory)/extract/app_pom/pom.xml",
+                                "SETTINGS_FILE": "$(Agent.TempDirectory)/settings.xml",
+                                "PATH_ARTIFACT_FILE": "$(PATH_ARTIFACT_FILE)",
+                                "muleEnv": "$(muleEnv)",
+                                "chEnv": "$(chEnv)",
+                                "AnypointClientId": "$(AnypointClientId)",
+                                "AnypointClientSecret": "$(AnypointClientSecret)",
+                                "encryptKey": "$(encryptKey)"
+                            },
+                            "taskId": "6c731c3c-3c68-459a-a5c9-bde6e6595b5b",
+                            "version": "3.*",
+                            "name": "Deploy",
+                            "refName": "",
+                            "enabled": true,
+                            "alwaysRun": false,
+                            "continueOnError": false,
+                            "timeoutInMinutes": 0,
+                            "retryCountOnTaskFailure": 0,
+                            "definitionType": "task",
+                            "overrideInputs": {},
+                            "condition": "succeeded()",
+                            "inputs": {
+                                "targetType": "filePath",
+                                "filePath": "$(System.DefaultWorkingDirectory)/_devops-scripts/bash/mule-deploy.sh",
+                                "arguments": "",
+                                "script": "echo cd $POM_FOLDER\ncd $POM_FOLDER\n\nmvn --batch-mode mule:deploy -s $SETTINGS_FILE -Dmule.artifact=$PATH_ARTIFACT_FILE -Ddeployment.env=$(muleEnv) -Dch2.env=$(chEnv) -Dap.client_id=$(AnypointClientId) -Dap.client_secret=$(AnypointClientSecret) -Dap.maven.server.id=$(apMavenServerId)\n",
+                                "workingDirectory": "",
+                                "failOnStderr": "false",
+                                "bashEnvValue": ""
+                            }
+                        }
+                    ]
+                }
+            ],
+            "environmentOptions": {
+                "emailNotificationType": "OnlyOnFailure",
+                "emailRecipients": "release.environment.owner;release.creator",
+                "skipArtifactsDownload": false,
+                "timeoutInMinutes": 0,
+                "enableAccessToken": false,
+                "publishDeploymentStatus": true,
+                "badgeEnabled": false,
+                "autoLinkWorkItems": false,
+                "pullRequestDeploymentEnabled": false
+            },
+            "demands": [],
+            "conditions": [
+                {
+                    "name": "ReleaseStarted",
+                    "conditionType": 1,
+                    "value": ""
+                }
+            ],
+            "executionPolicy": {
+                "concurrencyCount": 1,
+                "queueDepthCount": 0
+            },
+            "schedules": [],
+            "currentRelease": {
+                "id": 4,
+                "url": "https://vsrm.dev.azure.com/mule-brunosouzas/059cf721-f08e-4c8d-888f-0eec929abe91/_apis/Release/releases/4",
+                "_links": {}
+            },
+            "retentionPolicy": {
+                "daysToKeep": 30,
+                "releasesToKeep": 3,
+                "retainBuild": true
+            },
+            "processParameters": {},
+            "properties": {
+                "BoardsEnvironmentType": {
+                    "$type": "System.String",
+                    "$value": "production"
+                },
+                "LinkBoardsWorkItems": {
+                    "$type": "System.String",
+                    "$value": "False"
+                }
+            },
+            "preDeploymentGates": {
+                "id": 0,
+                "gatesOptions": null,
+                "gates": []
+            },
+            "postDeploymentGates": {
+                "id": 0,
+                "gatesOptions": null,
+                "gates": []
+            },
+            "environmentTriggers": [],
+            "badgeUrl": "https://vsrm.dev.azure.com/mule-brunosouzas/_apis/public/Release/badge/059cf721-f08e-4c8d-888f-0eec929abe91/2/2"
+        }
+    ],
+    "artifacts": [
+        {
+            "sourceId": "059cf721-f08e-4c8d-888f-0eec929abe91:3",
+            "type": "Build",
+            "alias": "_artifact",
+            "definitionReference": {
+                "artifactSourceDefinitionUrl": {
+                    "id": "https://dev.azure.com/mule-brunosouzas/_permalink/_build/index?collectionId=fa38be72-4df6-4214-a0bb-7caf6530adf0&projectId=059cf721-f08e-4c8d-888f-0eec929abe91&definitionId=3",
+                    "name": ""
+                },
+                "defaultVersionBranch": {
+                    "id": "",
+                    "name": ""
+                },
+                "defaultVersionSpecific": {
+                    "id": "",
+                    "name": ""
+                },
+                "defaultVersionTags": {
+                    "id": "",
+                    "name": ""
+                },
+                "defaultVersionType": {
+                    "id": "selectDuringReleaseCreationType",
+                    "name": "Specify at the time of release creation"
+                },
+                "definition": {
+                    "id": "3",
+                    "name": "hello-world"
+                },
+                "definitions": {
+                    "id": "",
+                    "name": ""
+                },
+                "IsMultiDefinitionType": {
+                    "id": "False",
+                    "name": "False"
+                },
+                "project": {
+                    "id": "059cf721-f08e-4c8d-888f-0eec929abe91",
+                    "name": "mulesoft-projects"
+                },
+                "repository": {
+                    "id": "",
+                    "name": ""
+                }
+            },
+            "isRetained": false
+        },
+        {
+            "sourceId": "059cf721-f08e-4c8d-888f-0eec929abe91:9a41b8a5-2835-46f5-922d-527751d8c19b",
+            "type": "Git",
+            "alias": "_devops-scripts",
+            "definitionReference": {
+                "branches": {
+                    "id": "develop",
+                    "name": "develop"
+                },
+                "checkoutNestedSubmodules": {
+                    "id": "True",
+                    "name": "Any nested submodules within"
+                },
+                "checkoutSubmodules": {
+                    "id": "",
+                    "name": ""
+                },
+                "defaultVersionSpecific": {
+                    "id": "",
+                    "name": ""
+                },
+                "defaultVersionType": {
+                    "id": "latestFromBranchType",
+                    "name": "Latest from the default branch"
+                },
+                "definition": {
+                    "id": "9a41b8a5-2835-46f5-922d-527751d8c19b",
+                    "name": "devops-scripts"
+                },
+                "fetchDepth": {
+                    "id": "",
+                    "name": ""
+                },
+                "gitLfsSupport": {
+                    "id": "",
+                    "name": ""
+                },
+                "project": {
+                    "id": "059cf721-f08e-4c8d-888f-0eec929abe91",
+                    "name": "mulesoft-projects"
+                }
+            },
+            "isPrimary": true,
+            "isRetained": false
+        }
+    ],
+    "triggers": [],
+    "releaseNameFormat": "$(Date:yyyyMMdd).$(Rev:r)",
+    "tags": [],
+    "properties": {
+        "DefinitionCreationSource": {
+            "$type": "System.String",
+            "$value": "ReleaseImport"
+        },
+        "IntegrateBoardsWorkItems": {
+            "$type": "System.String",
+            "$value": "False"
+        },
+        "IntegrateJiraWorkItems": {
+            "$type": "System.String",
+            "$value": "false"
+        }
+    },
+    "id": 2,
+    "name": "release-pipeline-template",
+    "path": "\\",
+    "projectReference": null,
+    "url": "https://vsrm.dev.azure.com/mule-brunosouzas/059cf721-f08e-4c8d-888f-0eec929abe91/_apis/Release/definitions/2",
+    "_links": {
+        "self": {
+            "href": "https://vsrm.dev.azure.com/mule-brunosouzas/059cf721-f08e-4c8d-888f-0eec929abe91/_apis/Release/definitions/2"
+        },
+        "web": {
+            "href": "https://dev.azure.com/mule-brunosouzas/059cf721-f08e-4c8d-888f-0eec929abe91/_release?definitionId=2"
+        }
+    }
+}
