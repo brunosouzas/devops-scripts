@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: devops-scripts
+  annotations:
+    github.com/project-slug: brunosouzas/devops-scripts
+spec:
+  type: other
+  lifecycle: unknown
+  owner: brunosouzas
